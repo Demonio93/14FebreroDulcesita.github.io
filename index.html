@@ -1,215 +1,529 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Para Dulcesita 💖</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Para mi Dulcesita 🍬💖</title>
+  <style>
+    :root{
+      --bg1:#0b0012;
+      --bg2:#1a0026;
+      --pink:#ff4d8d;
+      --pink2:#ff85b6;
+      --white:#fff;
+      --glass: rgba(255,255,255,.12);
+      --glass2: rgba(255,255,255,.18);
+      --shadow: 0 20px 60px rgba(0,0,0,.45);
+    }
 
-<style>
-:root{
-  --bg1:#0b0012;
-  --bg2:#1a0026;
-  --pink:#ff4d8d;
-  --pink2:#ff85b6;
-  --white:#fff;
-  --glass: rgba(255,255,255,.12);
-  --shadow: 0 20px 60px rgba(0,0,0,.45);
-}
+    *{ box-sizing:border-box; }
 
-*{ box-sizing:border-box; }
+    body{
+      margin:0;
+      min-height:100vh;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      background: radial-gradient(1200px 800px at 20% 10%, #2a0044 0%, transparent 60%),
+                  radial-gradient(900px 700px at 80% 90%, #3d004f 0%, transparent 60%),
+                  linear-gradient(135deg, var(--bg1), var(--bg2));
+      overflow:hidden;
+      color:var(--white);
+    }
 
-body{
-  margin:0;
-  min-height:100vh;
-  font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
-  background: linear-gradient(135deg, var(--bg1), var(--bg2));
-  overflow:hidden;
-  color:var(--white);
-}
+    /* Fondo con brillo suave */
+    .glow{
+      position:fixed;
+      inset:-40vmax;
+      background: conic-gradient(from 90deg, rgba(255,77,141,.25), rgba(255,133,182,.12), rgba(255,255,255,.06), rgba(255,77,141,.25));
+      filter: blur(70px);
+      opacity:.55;
+      animation: spin 18s linear infinite;
+      pointer-events:none;
+    }
+    @keyframes spin{ to{ transform: rotate(360deg);} }
 
-/* Brillo */
-.glow{
-  position:fixed;
-  inset:-40vmax;
-  background: conic-gradient(from 90deg, rgba(255,77,141,.25), rgba(255,133,182,.12));
-  filter: blur(70px);
-  opacity:.55;
-  animation: spin 18s linear infinite;
-  pointer-events:none;
-}
-@keyframes spin{ to{ transform: rotate(360deg);} }
+    /* Corazones cayendo */
+    .heart{
+      position: fixed;
+      top: -10vh;
+      left: 0;
+      font-size: 18px;
+      opacity: 0.9;
+      animation-name: fall, sway;
+      animation-timing-function: linear, ease-in-out;
+      animation-iteration-count: infinite, infinite;
+      user-select: none;
+      pointer-events: none;
+      text-shadow: 0 6px 16px rgba(0,0,0,.35);
+      will-change: transform;
+    }
 
-/* Corazones */
-.heart{
-  position: fixed;
-  top: -10vh;
-  font-size: 18px;
-  opacity: 0.9;
-  animation: fall linear infinite;
-  user-select: none;
-  pointer-events: none;
-}
+    @keyframes fall {
+      to {
+        transform: translateY(120vh) rotate(360deg);
+      }
+    }
 
-@keyframes fall {
-  to {
-    transform: translateY(120vh) rotate(360deg);
-  }
-}
+    @keyframes sway {
+      0%, 100% { margin-left: 0px; }
+      50% { margin-left: 40px; }
+    }
 
-/* Contenedor */
-.wrap{
-  height:100vh;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  padding: 24px;
-}
+    /* Contenedor central */
+    .wrap{
+      position:relative;
+      height:100vh;
+      width:100vw;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding: 24px;
+    }
 
-.card{
-  width:min(860px, 92vw);
-  padding: 26px;
-  border-radius: 26px;
-  background: linear-gradient(180deg, var(--glass), rgba(255,255,255,.06));
-  border: 1px solid rgba(255,255,255,.22);
-  box-shadow: var(--shadow);
-  backdrop-filter: blur(12px);
-  animation: pop .9s ease both;
-}
+    .card{
+      width:min(860px, 92vw);
+      max-height: 86vh;
+      padding: 28px 28px 20px;
+      border-radius: 28px;
+      background: linear-gradient(180deg, var(--glass), rgba(255,255,255,.07));
+      border: 1px solid rgba(255,255,255,.22);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      overflow:hidden;
+      transform: translateY(8px);
+      animation: pop .9s ease both;
+    }
 
-@keyframes pop{
-  from{ opacity:0; transform: translateY(20px) scale(.98); }
-  to{ opacity:1; transform: translateY(0) scale(1); }
-}
+    @keyframes pop{
+      0%{ opacity:0; transform: translateY(28px) scale(.98); }
+      100%{ opacity:1; transform: translateY(0) scale(1); }
+    }
 
-.title{
-  text-align:center;
-  font-size: clamp(24px, 4vw, 38px);
-  margin-bottom: 10px;
-}
+    .title{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:12px;
+      font-size: clamp(22px, 3.4vw, 38px);
+      margin: 6px 0 14px;
+      letter-spacing: .2px;
+    }
 
-.badge{
-  display:inline-block;
-  margin:auto;
-  padding: 6px 14px;
-  border-radius: 999px;
-  background: rgba(255,77,141,.15);
-  border: 1px solid rgba(255,77,141,.35);
-  color: #ffd4e6;
-  font-size: 14px;
-}
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      font-size: 14px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(255,77,141,.12);
+      border: 1px solid rgba(255,77,141,.35);
+      color: #ffd4e6;
+    }
 
-/* Typewriter */
-.typebox{
-  margin: 18px 0;
-  padding: 14px;
-  border-radius: 18px;
-  background: rgba(255,77,141,.10);
-  border: 1px solid rgba(255,77,141,.25);
-  text-align:center;
-}
+    .message{
+      font-size: clamp(15px, 1.35vw, 18px);
+      line-height: 1.75;
+      opacity: .97;
+      padding: 18px 14px;
+      background: rgba(0,0,0,.18);
+      border: 1px solid rgba(255,255,255,.14);
+      border-radius: 20px;
+      max-height: 52vh;
+      overflow:auto;
+      scroll-behavior:smooth;
+    }
 
-.typewriter{
-  font-size: clamp(20px, 3vw, 28px);
-  font-weight: 800;
-}
+    .message::-webkit-scrollbar{ width: 10px; }
+    .message::-webkit-scrollbar-thumb{
+      background: rgba(255,255,255,.18);
+      border-radius: 999px;
+      border: 2px solid rgba(0,0,0,.15);
+    }
 
-.cursor{
-  display:inline-block;
-  margin-left: 4px;
-  animation: blink 1s infinite;
-}
+    .signature{
+      margin-top: 14px;
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      justify-content:space-between;
+      align-items:center;
+    }
 
-@keyframes blink{
-  50%{ opacity: 0; }
-}
+    .sig-left{
+      display:flex;
+      flex-direction:column;
+      gap:4px;
+    }
 
-/* Mensaje */
-.message{
-  font-size: 16px;
-  line-height: 1.75;
-  background: rgba(0,0,0,.18);
-  border-radius: 18px;
-  padding: 18px;
-}
+    .sig-left b{ font-size: 16px; }
+    .sig-left span{ opacity:.86; font-size: 13px; }
 
-/* Firma */
-.signature{
-  margin-top: 14px;
-  text-align:center;
-  opacity:.9;
-}
+    .btns{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+    }
 
-/* Responsive */
-@media (max-width:480px){
-  body{ overflow-y:auto; }
-  .wrap{ align-items:flex-start; padding:14px; }
-  .card{ padding:18px; }
-  .message{ font-size:15px; }
-}
-</style>
+    button{
+      cursor:pointer;
+      border: 0;
+      padding: 10px 14px;
+      border-radius: 14px;
+      font-weight: 650;
+      letter-spacing: .2px;
+      transition: transform .14s ease, filter .14s ease;
+    }
+
+    .primary{
+      background: linear-gradient(135deg, var(--pink), var(--pink2));
+      color: #240014;
+      box-shadow: 0 16px 30px rgba(255,77,141,.22);
+    }
+
+    .ghost{
+      background: rgba(255,255,255,.10);
+      border: 1px solid rgba(255,255,255,.20);
+      color: rgba(255,255,255,.92);
+    }
+
+    button:hover{ transform: translateY(-2px); filter: brightness(1.04); }
+    button:active{ transform: translateY(0px) scale(.98); }
+
+    .footerNote{
+      margin-top: 12px;
+      opacity: .75;
+      font-size: 12px;
+      text-align:center;
+    }
+
+    /* Corazon grande flotando */
+    .big-heart{
+      position:absolute;
+      inset:auto 0 10px 0;
+      display:flex;
+      justify-content:center;
+      opacity:.14;
+      font-size: min(30vw, 220px);
+      filter: blur(.2px);
+      animation: pulse 2.6s ease-in-out infinite;
+      pointer-events:none;
+    }
+
+    @keyframes pulse{
+      0%,100%{ transform: scale(1); }
+      50%{ transform: scale(1.08); }
+    }
+
+    /* Pequeñas estrellitas */
+    .sparkle{
+      position: fixed;
+      width: 2px;
+      height: 2px;
+      background: rgba(255,255,255,.65);
+      border-radius: 999px;
+      opacity: .25;
+      animation: twinkle 2.8s ease-in-out infinite;
+      pointer-events:none;
+    }
+    @keyframes twinkle{
+      0%,100%{ transform: scale(1); opacity:.18; }
+      50%{ transform: scale(2.6); opacity:.55; }
+    }
+
+    /* Typewriter */
+    .typebox{
+      padding: 14px 14px 12px;
+      border-radius: 18px;
+      background: rgba(255,77,141,.09);
+      border: 1px solid rgba(255,77,141,.22);
+      margin: 2px 0 12px;
+    }
+
+    .typeLabel{
+      font-size: 13px;
+      opacity: .85;
+      margin-bottom: 8px;
+      letter-spacing: .2px;
+    }
+
+    .typewriter{
+      font-size: clamp(18px, 2.1vw, 26px);
+      font-weight: 800;
+      line-height: 1.25;
+      letter-spacing: .4px;
+      color: #ffe0ee;
+      text-shadow: 0 10px 30px rgba(255,77,141,.10);
+    }
+
+    .cursor{
+      display:inline-block;
+      margin-left: 4px;
+      opacity: 1;
+      animation: blink 1s steps(2, start) infinite;
+    }
+
+    @keyframes blink{
+      0%,49%{ opacity: 1; }
+      50%,100%{ opacity: 0; }
+    }
+
+    hr.soft{
+      border: none;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,.18), transparent);
+      margin: 10px 0 14px;
+      opacity: .9;
+    }
+
+    @media (max-width: 480px){
+      .card{ padding: 20px 18px 16px; border-radius: 22px; }
+      .message{ padding: 14px 12px; }
+    }
+
+    #toggleHearts{
+        display: none;
+    }
+  </style>
 </head>
-
 <body>
+  <div class="glow"></div>
 
-<div class="glow"></div>
+  <div class="wrap">
+    <div class="card">
+      <div class="title">💖 Para mi Dulcesita 🍬</div>
+      <div style="display:flex; justify-content:center; margin-bottom: 14px;">
+        <div class="badge">✨ Un detalle virtual hecho con amor — 14 de Febrero ✨</div>
+      </div>
 
-<div class="wrap">
-  <div class="card">
+      <div class="message" id="msg">
+        <div class="typebox">
+          <div class="typeLabel">💌 Un mensaje para ti, mi Dulcesita hermosa:</div>
+          <div class="typewriter" aria-live="polite">
+            <span id="typedText"></span><span class="cursor" aria-hidden="true">|</span>
+          </div>
+        </div>
+        <hr class="soft" />
+        <p>Mi Dulcesita…</p>
+        <p>
+          Hoy quiero decirte algo que, aunque lo sienta todos los días, nunca quiero dejar de recordártelo:
+          <b>te quiero</b>. Te quiero con un amor bonito, sincero y lleno de cariño. Ese amor que se siente en el pecho,
+          que da paz, que abraza por dentro y que hace que el mundo se vea más bonito.
+        </p>
+        <p>
+          Gracias por existir, por llegar a mi vida y por quedarte. Gracias por tu forma tan dulce de ser,
+          por tu manera de hablar, por tu risa, por tu mirada. Me encanta cómo iluminas mis días; me encanta cómo, con sólo
+          saber que estás ahí, todo se siente más fuerte, más seguro y más feliz.
+        </p>
+        <p>
+          Contigo aprendí que el amor no sólo se dice… se cuida. Se demuestra. Se construye. Y contigo yo quiero
+          construirlo todo: momentos, recuerdos, abrazos, metas, risas, aventuras y también tranquilidad.
+          Quiero ser ese lugar donde siempre te sientas amada, respetada y protegida.
+        </p>
+        <p>
+          Este 14 de febrero no quiero darte un mensaje cualquiera. Quiero darte una promesa: <b>yo te elijo</b>.
+          Te elijo en mis días buenos y en mis días difíciles. Te elijo en la calma y en la tormenta.
+          Te elijo cuando todo es fácil… y también cuando la vida pide paciencia.
+          Porque tú no eres una casualidad en mi vida: tú eres un regalo.
+        </p>
+        <p>
+          Y si hoy pudiera pedir un deseo, sería uno muy simple pero enorme: que sigamos caminando juntos.
+          Que sigamos creciendo, aprendiendo y amándonos con esa ternura que nos hace especiales.
+          Yo no quiero un amor perfecto; yo quiero un amor real… y ese amor, Dulcesita, lo quiero contigo.
+        </p>
+        <p>
+          Gracias por ser mi alegría, mi motivación y mi lugar seguro. Gracias por cada palabra,
+          por cada abrazo, por cada instante. Gracias por hacerme sentir amado.
+        </p>
+        <p>
+          <b>Te quiero muchísimo</b>… más de lo que imaginas, más de lo que puedo explicar.
+          Y hoy, mañana y siempre: <b>eres mi persona favorita</b>.
+        </p>
+        <p style="margin-top:18px; font-weight:700;">Con todo mi amor… ❤️</p>
+      </div>
 
-    <div class="title">Para mi Dulcesita 💖</div>
-    <div class="badge">14 de Febrero</div>
+      <div class="signature">
+        <div class="sig-left">
+          <b>— De: Tu Miguelito</b>
+          <span id="dateText">14 de febrero</span>
+        </div>
+        <div class="btns">
+          <button class="ghost" id="toggleHearts"></button>
+          <button class="primary" id="makeWish">💌 Toca para un mensajito</button>
+        </div>
+      </div>
 
-    <div class="typebox">
-      <div class="typewriter" id="typewriter"></div><span class="cursor">|</span>
+      <div class="big-heart">❤️</div>
     </div>
-
-    <div class="message">
-      Dulcesita,  
-      quiero que sepas que cada día contigo es un regalo que agradezco con todo mi corazón.
-      Tu sonrisa ilumina mis días, tu voz me calma y tu forma de ser hace que todo tenga más sentido.
-      No hay palabras suficientes para describir lo mucho que te amo, pero aun así quiero intentarlo
-      todos los días, en cada detalle, en cada gesto y en cada momento que compartimos.
-
-      <br><br>
-      Gracias por ser tú, por elegirme y por permitirme amarte de la forma más sincera.
-      Este pequeño detalle es solo una mínima muestra de todo lo grande que siento por ti.
-    </div>
-
-    <div class="signature">
-      Con todo mi amor 💕<br>
-      <b>Siempre tuyo</b>
-    </div>
-
   </div>
-</div>
 
-<script>
-// Typewriter
-const text = "Te amo muchísimo 💖";
-let i = 0;
-const speed = 120;
-const el = document.getElementById("typewriter");
+  <script>
+    // ===== FECHA AUTOMATICA =====
+    const d = new Date();
+    const meses = ["enero","febrero","marzo","abril","mayo","junio","julio","agosto","septiembre","octubre","noviembre","diciembre"]; 
+    document.getElementById('dateText').textContent = `${d.getDate()} de ${meses[d.getMonth()]} de ${d.getFullYear()}`;
 
-function type(){
-  if(i < text.length){
-    el.textContent += text.charAt(i);
-    i++;
-    setTimeout(type, speed);
-  }
-}
-type();
+    // ===== ESTRELLITAS =====
+    for(let i=0;i<45;i++){
+      const s = document.createElement('div');
+      s.className = 'sparkle';
+      s.style.left = Math.random()*100 + 'vw';
+      s.style.top = Math.random()*100 + 'vh';
+      s.style.animationDelay = (Math.random()*2.8) + 's';
+      s.style.opacity = (0.08 + Math.random()*0.38).toFixed(2);
+      document.body.appendChild(s);
+    }
 
-// Corazones
-setInterval(()=>{
-  const heart = document.createElement("div");
-  heart.className = "heart";
-  heart.textContent = "💖";
-  heart.style.left = Math.random()*100 + "vw";
-  heart.style.animationDuration = 5 + Math.random()*4 + "s";
-  document.body.appendChild(heart);
-  setTimeout(()=>heart.remove(),9000);
-},300);
-</script>
+    // ===== CORAZONES CAYENDO =====
+    let heartsPaused = false;
+    const heartPool = [];
 
+    function createHeart(){
+      const h = document.createElement('div');
+      h.className = 'heart';
+      // Variantes de corazones (emoji)
+      const hearts = ['❤️','💖','💗','💘','💝','💕','💞'];
+      h.textContent = hearts[Math.floor(Math.random()*hearts.length)];
+
+      const size = 14 + Math.random()*26;
+      h.style.fontSize = size + 'px';
+      h.style.left = Math.random()*100 + 'vw';
+      h.style.opacity = (0.35 + Math.random()*0.65).toFixed(2);
+
+      const fallDuration = 6 + Math.random()*7; // 6-13s
+      const swayDuration = 2.8 + Math.random()*3.8;
+      h.style.animationDuration = `${fallDuration}s, ${swayDuration}s`;
+      h.style.animationDelay = `${Math.random()*2}s, ${Math.random()*2}s`;
+
+      // Tintado leve con filtro
+      const hue = 330 + Math.random()*30; // rosa
+      h.style.filter = `drop-shadow(0 8px 18px rgba(0,0,0,.25)) hue-rotate(${hue-330}deg)`;
+
+      document.body.appendChild(h);
+
+      // Cleanup
+      const totalMs = (fallDuration + 2) * 1000;
+      setTimeout(() => {
+        h.remove();
+      }, totalMs);
+
+      return h;
+    }
+
+    let heartInterval = null;
+
+    function startHearts(){
+      heartInterval = setInterval(() => {
+        if(!heartsPaused) createHeart();
+      }, 210);
+    }
+
+    function stopHearts(){
+      clearInterval(heartInterval);
+      heartInterval = null;
+    }
+
+    startHearts();
+
+    // ===== BOTONES =====
+    const toggleBtn = document.getElementById('toggleHearts');
+    toggleBtn.addEventListener('click', () => {
+      heartsPaused = !heartsPaused;
+      toggleBtn.textContent = heartsPaused ? '▶️ Reanudar corazones' : '⏸️ Pausar corazones';
+    });
+
+    const wishes = [
+      'Eres mi casualidad favorita… y mi decisión más bonita. ❤️',
+      'Dulcesita, contigo todo se siente hogar. 🫂',
+      'Te quiero con un amor tranquilo, bonito y real. 💖',
+      'Prometo cuidarte siempre: con hechos, con tiempo y con amor. 💝',
+      'Gracias por ser mi paz y mi sonrisa. 💕'
+    ];
+
+    const makeWishBtn = document.getElementById('makeWish');
+    makeWishBtn.addEventListener('click', () => {
+      const m = wishes[Math.floor(Math.random()*wishes.length)];
+      alert(m);
+    });
+
+    // Scroll suave al principio al abrir
+    window.addEventListener('load', () => {
+      const msg = document.getElementById('msg');
+      msg.scrollTop = 0;
+    });
+
+    // ===== EFECTO "TE AMO" ESCRIBIENDOSE (TYPEWRITER) =====
+    const typedEl = document.getElementById('typedText');
+
+    // Puedes cambiar el texto aquí:
+    const typedPhrases = [
+      'Te quiero, Dulcesita. ❤️',
+      'Te quiero con todo mi corazón. 💖',
+      'Te quiero hoy, mañana y siempre. 💕',
+      'Te quiero más de lo que puedo explicar. 💝',
+      'Te quiero… y te elijo todos los días. 💘'
+    ];
+
+    let phraseIndex = 0;
+    let charIndex = 0;
+    let deleting = false;
+
+    function typeLoop(){
+      const current = typedPhrases[phraseIndex];
+
+      if (!deleting) {
+        charIndex++;
+        typedEl.textContent = current.slice(0, charIndex);
+
+        if (charIndex >= current.length) {
+          // pausa cuando termina
+          deleting = true;
+          setTimeout(typeLoop, 1200);
+          return;
+        }
+        setTimeout(typeLoop, 55);
+
+      } else {
+        charIndex--;
+        typedEl.textContent = current.slice(0, charIndex);
+
+        if (charIndex <= 0) {
+          deleting = false;
+          phraseIndex = (phraseIndex + 1) % typedPhrases.length;
+          setTimeout(typeLoop, 350);
+          return;
+        }
+        setTimeout(typeLoop, 28);
+      }
+    }
+
+    // Inicia luego de una pequeña pausa
+    setTimeout(typeLoop, 700);
+
+    // Bonus: corazones al click
+    document.addEventListener('click', (e) => {
+      if (e.target.tagName.toLowerCase() === 'button') return;
+      const h = document.createElement('div');
+      h.className = 'heart';
+      h.textContent = '💖';
+      h.style.left = e.clientX + 'px';
+      h.style.top = e.clientY + 'px';
+      h.style.position = 'fixed';
+      h.style.fontSize = (18 + Math.random()*18) + 'px';
+      h.style.animation = 'none';
+      h.style.transform = 'translate(-50%, -50%)';
+      h.style.opacity = '1';
+      document.body.appendChild(h);
+
+      const rise = [
+        { transform: 'translate(-50%, -50%) scale(1)', opacity: 1 },
+        { transform: 'translate(-50%, -140%) scale(1.5)', opacity: 0 }
+      ];
+      const timing = { duration: 850, easing: 'cubic-bezier(.2,.8,.2,1)' };
+      h.animate(rise, timing);
+      setTimeout(()=>h.remove(), 900);
+    });
+  </script>
 </body>
 </html>
